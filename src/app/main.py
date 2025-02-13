@@ -43,3 +43,11 @@ def create_subscription(subscription: schemas.SubscriptionCreate, db: Session = 
 @app.put("/subscriptions/{subscription_id}", response_model=schemas.Subscription)
 def deactivate_subscription(subscription_id: int, db: Session = Depends(db.get_db)):
     return crud.deactivate_subscription(db=db, subscription_id=subscription_id)
+
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env file
+
+DATABASE_URL = os.getenv("DATABASE_URL")
